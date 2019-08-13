@@ -1,0 +1,403 @@
+.normal{
+  height: 100%;
+  .start{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    .user_box{
+      padding: 4vh 4vw 0; 
+    }
+    .game_content{
+      width: 100%;
+      display: flex;
+      flex: 1;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      .logo{
+        width: 65vw;
+        margin: 0 auto;
+        display: block;
+      }
+      .btn_group{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 20vw;
+        img{
+          margin-bottom: 5vw;
+          width: 40vw;
+        }
+      }
+    }
+  }
+
+  //游戏中
+  .starting{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    .user_box{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4vh 4vw 0; 
+      position: relative;
+      .record_high{
+        height: 11vw;
+        padding: 0 5vw 0 5vw;
+        display: inline-flex;
+        flex-direction: column;
+        border-radius: 50px;
+        justify-content: center;
+        align-items: center;
+        box-shadow:0.1vw 0.8vw 0.8vw #000;
+        background-image: radial-gradient(80% 60% at 55% 50%, transparent,rgba(99, 252, 252, 0.5));
+        p{
+          color: #FFF;
+          margin: 0;
+          font-size: 3vw;
+        }
+        p.score{
+          font-weight: bold;
+        }
+      }
+      .current_score{
+        position: absolute;
+        top: 110%;
+        left: 4vw;
+        background:rgba(51, 51, 51, 0.8);
+        padding: 1vw 3vw 1vw;
+        display: inline-flex;
+        align-items: center;
+        flex-direction: column;
+        p{
+          color: #FFF;
+          margin: 0;
+          font-size: 3vw;
+        }
+        p.score{
+          font-weight: bold;
+          color: #b1cf21;
+          font-size: 6vw;
+          line-height: 0.95em;
+        }
+      }
+    }
+    .ball_fall.ball_box{
+      animation: ball_fall 1s ease-in;
+    }
+    .ball_box{
+      position: fixed;
+      top: 20vh;
+      width: 100%;
+      img{
+        z-index: 10;
+        position: relative;
+        width: 68vw;
+        margin: 0 auto;
+        display: block;
+      }
+      .face{
+        width: 25vw;
+        height: 20vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 11;
+        transform: translateZ(0) translateX(-50%) translateY(-50%);
+        animation: face_change 0.5s infinite;
+        background-image: url('../../assets/images/shoot_face.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+      }
+      .rocket_on_ball,.shoot_failed{
+        transform-origin:50% 0;
+        position: absolute;
+        top: 50%;
+        left: 40vw;
+        width: 20vw;
+        height: 55%;
+        background-image: url('../../assets/images/rocket.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom;
+        background-size: auto 55%;
+      }
+      .shoot_failed{
+        transition: all 0.7s ease-in;
+        transform-origin: 50% 75%;
+        animation: shoot_failed 0.4s linear infinite;
+      }
+    }
+    .monster{
+      z-index: -1;
+      position: absolute;
+      top: 50vh;
+      width: 100vw;
+      height: 20vh;
+      animation: monster_change 5s infinite;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: left;
+    }
+    .aliens_gif{
+      position: fixed;
+      bottom: 0;
+      right: 5vw;
+      height: 10vh;
+      width: 20vw;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: aliens_gif 0.5s steps(1) infinite;
+    }
+    .surplus_rocket{
+      display: inline-flex;
+      position: fixed;
+      align-items: center;
+      bottom: 7vh;
+      left: 3vw;
+      img{
+        height: 7vh
+      }
+      span{
+        margin-left: 2vw;
+        font-size: 3vw;
+        color: #FFF;
+      }
+    }
+    .click_rocket{
+      width: 20vw;
+      height: 20vw;
+      position: fixed;
+      bottom: 5vh;
+      left: 50%;
+      transform: translateZ(0) translateX(-50%);
+      background-image: url('../../assets/images/rocket.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+    .rocket_shooting{
+      animation: rocket_shooting 0.2s linear;
+    }
+    .grade_num_tip{
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 99999999999;
+      height: 100vh;
+      width: 100vw;
+      color: #FFF;
+      font-size: 10vw;
+      font-weight: bold;
+      line-height: 100vh;
+      text-align: center;
+      animation: grade_num_tip 3s linear;
+    }
+  }
+  .game_end{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999999;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.99);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .score_info_box{
+      position: relative;
+      margin-bottom: 5vh;
+      img{
+        width: 80vw;
+      }
+      .score_info{
+        top: 65%;
+        left: 50%;
+        transform: translateZ(0) translateX(-50%) translateY(-50%);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        p{
+          margin: 0;
+        }
+        .best{
+          color: #FFF;
+          font-size: 5vw;
+        }
+        .score{
+          font-size: 12vw;
+          font-weight: bold;
+        }
+      }
+    }
+    .menu_btn{
+      display: flex;
+      width: 80vw;
+      justify-content: space-between;
+      align-items: center;
+      img{
+        width: 30%;
+      }
+    }
+  }
+}
+
+.share_box{
+  position: fixed;
+  z-index: 999999999999;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  img{
+    height:60vh;
+  }
+  div{
+    text-align: center;
+    width: 40vw;
+    border:1px solid #FFF;
+    color: #FFF;
+    border-radius: 3vw;
+    font-size: 5vw;
+    padding: 3vw 0 3vw;
+  }
+}
+
+.no_auth{
+  position: fixed;
+  z-index: 99999;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/images/bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  h2{
+    text-align: center;
+    color:#FFF;
+    padding: 10vw;
+  }
+}
+
+
+
+
+//动画
+//右下角外星人动画
+@keyframes aliens_gif{
+  0%{
+    background-image: url('../../assets/images/aliens_rigth.png');
+  }
+  50%{
+    background-image: url('../../assets/images/aliens_center.png');
+  }
+  100% {
+    background-image: url('../../assets/images/aliens_left.png');
+  }
+}
+//火箭着陆失败动画
+@keyframes shoot_failed{
+  0% {
+    transform: translateZ(0) rotate(0deg);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
+//每关过关后，展示下一关关卡 暗屏遮罩
+@keyframes grade_num_tip{
+  0% {
+    background: transparent
+  }
+  20% {
+    background: #000;
+  }
+  99% {
+    background: #000;
+  }
+  100% {
+    background: transparent;
+  }
+}
+//过关星球坠落
+@keyframes ball_fall{
+  0% {
+    transform: translateZ(0) translateY(0);
+  }
+  100% {
+    transform: translateZ(0) translateY(100vh);
+  }
+}
+//星球上的火箭旋转
+@keyframes rocket_rotate{
+  0% {
+    transform: translateZ(0) rotate(0)
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg)
+  }
+}
+//火箭发射
+@keyframes rocket_shooting{
+  0% {
+    transform: translateZ(0) translateX(-50%) translateY(0)
+  }
+  100% {
+    transform: translateZ(0) translateX(-50%) translateY(-28vh)
+  }
+}
+// 球体旋转
+@keyframes ball_rotate{
+  0% {
+    transform: translateZ(0) rotate(0)
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg)
+  }
+}
+//星球上面的表情
+@keyframes face_change
+{
+  0% {
+    background-image: url('../../assets/images/face1.png');
+  }
+  50%{
+    background-image: url('../../assets/images/face1.png');
+  }
+  51% {
+    background-image: url('../../assets/images/face2.png');
+  }
+  100% {
+    background-image: url('../../assets/images/face2.png');
+  }
+}
+//星球旁边的小怪物
+@keyframes monster_change{
+  0% {
+    background-image: url('../../assets/images/monster1.png')
+  }
+  50%{
+    background-image: url('../../assets/images/monster1.png')
+  }
+  51% {
+    background-image: url('../../assets/images/monster2.png')
+  }
+  100% {
+    background-image: url('../../assets/images/monster2.png')
+  }
+}

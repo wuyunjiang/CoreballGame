@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>见缝插针</title>
+    <style type="text/css" id="init_rocket_rotate_style"></style>
+    <script src="./js/jweixin-1.4.0.js"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <audio id="bg_audio" src="./assets/audio/bgm1.mp3" preload="auto" loop="loop"></audio>
+    <audio id="shoot_audio" src="./assets/audio/shoot.mp3" preload="auto"></audio>
+    <audio id="pass_audio" src="./assets/audio/pass.mp3" preload="auto"></audio>
+    <audio id="failed_audio" src="./assets/audio/failed.mp3" preload="auto"></audio>
+    <audio id="success_audio" src="./assets/audio/success.mp3" preload="auto"></audio>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+  <script>
+    window.onload=function(){
+      document.addEventListener("WeixinJSBridgeReady", function () {
+        document.getElementById("bg_audio").play();
+      }, false);
+    }
+  </script>
+  
+  <!-- 用于在苹果手机上测试 -->
+  <!-- <script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
+  <script>eruda.init();</script> -->
+</html>
