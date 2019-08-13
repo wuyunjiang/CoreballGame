@@ -1,5 +1,5 @@
 ## 效果演示
-![enter image description here](https://easy-auction-cs.oss-cn-beijing.aliyuncs.com/52b6079c151b641e20dc2df85ed42ef1.gif)
+[预览gif（8.8M）](https://easy-auction-cs.oss-cn-beijing.aliyuncs.com/52b6079c151b641e20dc2df85ed42ef1.gif)
 
 请忽略头像加载失败，因为那就是我的微信头像
 
